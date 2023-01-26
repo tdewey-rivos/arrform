@@ -134,7 +134,7 @@ impl<const BUF_SIZE: usize> fmt::Write for ArrForm<BUF_SIZE> {
 #[macro_export]
 macro_rules! arrform {
     ($size:expr, $($arg:tt)*) => {{
-        let mut af = ArrForm::<$size>::new();
+        let mut af = $crate::ArrForm::<$size>::new();
 
         // Do not panic on buffer overflow - return the Err to the caller
         af.format(format_args!($($arg)*));
