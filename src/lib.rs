@@ -3,12 +3,12 @@
 //! String formatting without memory allocator
 //! ==========================================
 //! 
-//! In bare matal systems, there is often the task of converting numbers into text and formatting 
-//! them. The standard Rust functions like format!, write! etc. cannot be used in no_std 
-//! environments because they require a memory allocator. The arrform! macro uses the standard 
+//! In bare metal systems, there is often the task of converting numbers into text and formatting
+//! them. The standard Rust functions like format!, write! etc. cannot be used in no_std
+//! environments because they require a memory allocator. The arrform! macro uses the standard
 //! library functions, but writes to a fixed length array which is alocated on the stack.
 //! 
-//! This crate is usable in no_std environments. This is a replacement for the format! macro, based 
+//! This crate is usable in no_std environments. This is a replacement for the format! macro, based
 //! on a fixed-size array allocated on the stack.
 //! 
 //! # arrform!
@@ -22,8 +22,8 @@
 //! 
 //! ## ArrForm struct as an alternative
 //! 
-//! The [ArrForm] struct provides more detailed error handling and supports multiple use of the 
-//! same buffer. However, it is much more cumbersome to use and generates more syntactic noise. 
+//! The [ArrForm] struct provides more detailed error handling and supports multiple use of the
+//! same buffer. However, it is much more cumbersome to use and generates more syntactic noise.
 //! 
 //! # Overhead
 //! 
@@ -35,7 +35,7 @@
 //! 
 //! # License
 //! 
-//! Apache version 2.0 or Mit
+//! Apache version 2.0 or MIT
 //!
 use core::{fmt, str::from_utf8_unchecked};
 use core::mem::MaybeUninit;
