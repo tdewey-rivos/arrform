@@ -123,7 +123,7 @@ impl<const BUF_SIZE: usize> fmt::Write for ArrForm<BUF_SIZE> {
 /// 
 /// This macro first reserves a buffer on the stack. Then it uses the struct [ArrForm] to format 
 /// text and numbers. It returns an instance of ArrForm that allows easy access to the contained 
-/// text. The macro will return a Result<Val, Err> describing if the formatting was successful.
+/// text. The macro panics if the buffer is chosen too small.
 /// 
 /// ```
 /// use arrform::{arrform, ArrForm};
@@ -136,8 +136,8 @@ macro_rules! arrform {
     ($size:expr, $($arg:tt)*) => {{
         let mut af = $crate::ArrForm::<$size>::new();
 
-        // Do not panic on buffer overflow - return the Err to the caller
-        af.format(format_args!($($arg)*));
+        // Panic on buffer overflow
+        af.format(format_args!($($arg)*)).expect("Buffer overflow");
         af
     }}
 }
